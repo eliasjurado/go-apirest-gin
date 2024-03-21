@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,7 +12,7 @@ func main() {
 	
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
 	})
@@ -32,3 +33,6 @@ var albums = [] Album{
 	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan",Price:23.43},
 }
 
+func getAlbums(c *gin.Context)  {
+	c.IndentedJSON(http.StatusOK,albums)
+}

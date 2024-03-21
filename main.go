@@ -11,11 +11,8 @@ func main() {
 	log.Printf("%+v\n", albums)
 
 	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
+
+	router.GET("/albums", getAlbums)
 
 	router.Run("localhost:8080")
 }
